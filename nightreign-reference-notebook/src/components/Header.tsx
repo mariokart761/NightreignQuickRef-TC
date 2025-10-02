@@ -366,7 +366,7 @@ const Header: React.FC<HeaderProps> = React.memo(({
                   />
                 </Popover>
               </Tooltip>
-              <Tooltip title="查看本項目" placement="bottom" className="theme-toggle-btn">
+              <Tooltip title="查看項目倉庫" placement="bottom" className="theme-toggle-btn">
                 <Popover
                   content={
                     <div style={{ padding: '8px', maxWidth: '200px' }}>
@@ -380,7 +380,17 @@ const Header: React.FC<HeaderProps> = React.memo(({
                           rel="noopener noreferrer"
                           className="header-link"
                         >
-                          NightreignQuickRef
+                          原作者 NightreignQuickRef
+                        </a>
+                      </div>
+                      <div style={{ fontSize: '11px', lineHeight: '1.4' }}>
+                        <a
+                          href="https://github.com/mariokart761/NightreignQuickRef-TC"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="header-link"
+                        >
+                          繁體中文版 NightreignQuickRef-TC
                         </a>
                       </div>
                       <div style={{
@@ -390,7 +400,7 @@ const Header: React.FC<HeaderProps> = React.memo(({
                         fontSize: '10px',
                         color: '#999'
                       }}>
-                        🙏 求個Star ⭐️ 感謝支持 🙏
+                        🙏 請給予原作者支持 ⭐️ 感謝您 🙏
                       </div>
                     </div>
                   }
