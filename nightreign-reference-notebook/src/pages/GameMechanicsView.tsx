@@ -13,14 +13,14 @@ interface GameMechanicsViewProps {
 }
 
 const CircleShrinkEffect: React.FC<{ currentStep: number }> = ({ currentStep }) => {
-  // 根据时间点计算圈的大小
+  // 根據時間點計算圈的大小
   const getCircleSize = (step: number) => {
     switch (step) {
       case 0: return 100;
       case 1: return 60;
-      case 2: return 60;  // 第一次缩圈结束
-      case 3: return 20;  // 第二次缩圈开始
-      case 4: return 20;  // 第二次缩圈结束
+      case 2: return 60;  // 第一次縮圈結束
+      case 3: return 20;  // 第二次縮圈開始
+      case 4: return 20;  // 第二次縮圈結束
       case 5: return 20;
       default: return 100;
     }
@@ -81,7 +81,7 @@ const CircleShrinkEffect: React.FC<{ currentStep: number }> = ({ currentStep }) 
         {/* 外圈 - 固定大小 */}
         <div className={`circle-outer ${isFirstShrinkCompletedPhase ? 'circle-outer-faded' : ''} ${isSecondShrinkStartPhase ? 'circle-outer-second-shrink' : ''}`} />
 
-        {/* 内圈 - 根据时间点动态变化 */}
+        {/* 內圈 - 根據時間點動態變化 */}
         <div
           className={`circle-inner ${shouldPulse ? 'circle-pulse' : ''} ${shrinkPhase !== 'none' ? `shrink-${shrinkPhase}` : ''} ${isFirstShrink ? 'first-shrink-no-bg' : ''} ${isFirstShrinkEndPhase ? 'first-shrink-end-dark' : ''} ${isSecondShrinkStartPhase ? 'second-shrink-start-dark' : ''} ${isSecondShrinkEndPhase ? 'second-shrink-end-dark' : ''}`}
           style={{
@@ -91,7 +91,7 @@ const CircleShrinkEffect: React.FC<{ currentStep: number }> = ({ currentStep }) 
           }}
         />
 
-        {/* 脉冲效果圈 - 只在缩圈开始时显示 */}
+        {/* 脈衝效果圈 - 只在縮圈開始時顯示 */}
         {shouldPulse && (
           <div
             className={`circle-pulse-ring ${isSecondShrinkStartPhase ? 'second-shrink-pulse' : ''}`}
@@ -102,7 +102,7 @@ const CircleShrinkEffect: React.FC<{ currentStep: number }> = ({ currentStep }) 
           />
         )}
 
-        {/* 中心点 */}
+        {/* 中心點 */}
         <div className="circle-center" />
 
       </div>
@@ -112,41 +112,41 @@ const CircleShrinkEffect: React.FC<{ currentStep: number }> = ({ currentStep }) 
 };
 
 const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) => {
-  // 时间轴状态
+  // 時間軸狀態
   const [day1TimelineStep, setDay1TimelineStep] = useState(0);
 
-  // 获取当前时间点的时间和描述
+  // 獲取當前時間點的時間和描述
   const getCurrentTimeInfo = (step: number) => {
     const timelineItems = [
-      { time: '0:00', description: 'Day 1/ Day 2 开始' },
-      { time: '4:30', description: '第一次缩圈开始' },
-      { time: '7:30', description: '第一次缩圈结束' },
-      { time: '11:00', description: '第二次缩圈开始' },
-      { time: '14:30', description: '第二次缩圈结束' },
+      { time: '0:00', description: 'Day 1/ Day 2 開始' },
+      { time: '4:30', description: '第一次縮圈開始' },
+      { time: '7:30', description: '第一次縮圈結束' },
+      { time: '11:00', description: '第二次縮圈開始' },
+      { time: '14:30', description: '第二次縮圈結束' },
     ];
 
     if (step >= 0 && step < timelineItems.length) {
       return timelineItems[step];
     }
-    return { time: '0:00', description: 'Day 1/ Day 2 开始' };
+    return { time: '0:00', description: 'Day 1/ Day 2 開始' };
   };
 
 
 
-  if (functionName === '游戏机制') {
+  if (functionName === '遊戲機制') {
     return (
       <>
         <div className="game-mechanics-container" style={{ '--mechanics-container-width': '1400px' } as React.CSSProperties}>
           <div className="mechanics-layout">
 
-            {/* 游戏时间机制 - 自定义宽度比例 2:1 */}
+            {/* 遊戲時間機制 - 自定義寬度比例 2:1 */}
             <div className="mechanics-grid custom-columns" style={{ '--mechanics-grid-columns': '1.2fr 2fr' } as React.CSSProperties}>
               <div className="mechanic-card" id="game-time-mechanism">
                 <div className="card-content">
                   <div className="card-title-section">
                     <Title level={5} className="mechanic-card-title">
                       <ClockCircleTwoTone twoToneColor="blue" />
-                      游戏时间机制
+                      遊戲時間機制
                     </Title>
                   </div>
                   <div className="card-body">
@@ -156,7 +156,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                         items={[
                           {
                             dot: <PauseCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: '16px' }} />,
-                            children: 'Day 1 / Day 2 开始',
+                            children: 'Day 1 / Day 2 開始',
                             color: 'green',
                             label: '0:00',
                           },
@@ -166,7 +166,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                           },
                           {
                             dot: <ClockCircleTwoTone />,
-                            children: '第一次缩圈开始',
+                            children: '第一次縮圈開始',
                             label: '4:30',
                           },
                           {
@@ -175,7 +175,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                           },
                           {
                             dot: <CheckCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: '16px' }} />,
-                            children: '第一次缩圈结束',
+                            children: '第一次縮圈結束',
                             label: '7:30',
                           },
                           {
@@ -184,7 +184,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                           },
                           {
                             dot: <ClockCircleTwoTone />,
-                            children: '第二次缩圈开始',
+                            children: '第二次縮圈開始',
                             label: '11:00',
                           },
                           {
@@ -193,16 +193,16 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                           },
                           {
                             dot: <CheckCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: '16px' }} />,
-                            children: '第二次缩圈结束',
+                            children: '第二次縮圈結束',
                             label: '14:00',
                           },
                           {
                             dot: <FireTwoTone twoToneColor="red" />,
-                            children: '战斗!',
+                            children: '戰鬥!',
                           },
                           {
                             dot: <HeartTwoTone twoToneColor="#eb2f96" />,
-                            children: 'Day 2 开始 / 最终Boss战',
+                            children: 'Day 2 開始 / 最終Boss戰',
                             color: 'green',
                             label: '0:00',
                           },
@@ -213,18 +213,18 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                 </div>
               </div>
 
-              {/* 右侧小卡片 - 升级所需卢恩 */}
+              {/* 右側小卡片 - 升級所需盧恩 */}
               <div className="mechanic-card" id="runes-required">
                 <div className="card-content">
                   <div className="card-title-section">
                     <Title level={5} className="mechanic-card-title">
                       <MoneyCollectTwoTone twoToneColor="#faad14" />
-                      升级所需卢恩
+                      升級所需盧恩
                     </Title>
                   </div>
                   <div className="card-body">
                     <div className="runes-table-container">
-                      {/* 第一栏 - 1-8级 */}
+                      {/* 第一欄 - 1-8級 */}
                       <div className="runes-column">
                         <Table
                           dataSource={[
@@ -239,13 +239,13 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                           ]}
                           columns={[
                             {
-                              title: '等级',
+                              title: '等級',
                               dataIndex: 'level',
                               key: 'level',
                               width: '33%',
                             },
                             {
-                              title: '所需卢恩',
+                              title: '所需盧恩',
                               dataIndex: 'runes',
                               key: 'runes',
                               width: '33%',
@@ -256,7 +256,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                               )
                             },
                             {
-                              title: '总成本',
+                              title: '總成本',
                               dataIndex: 'totalCost',
                               key: 'totalCost',
                               width: '34%',
@@ -269,7 +269,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                         />
                       </div>
 
-                      {/* 第二栏 - 9-15级 */}
+                      {/* 第二欄 - 9-15級 */}
                       <div className="runes-column">
                         <Table
                           dataSource={[
@@ -280,17 +280,17 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                             { key: '13', level: '13', runes: '61,840', totalCost: '369,279' },
                             { key: '14', level: '14', runes: '68,479', totalCost: '437,758' },
                             { key: '15', level: '15', runes: '75,358', totalCost: '513,116' },
-                            { key: 'total', level: '总计', runes: '513,336', totalCost: '-' },
+                            { key: 'total', level: '總計', runes: '513,336', totalCost: '-' },
                           ]}
                           columns={[
                             {
-                              title: '等级',
+                              title: '等級',
                               dataIndex: 'level',
                               key: 'level',
                               width: '33%',
                             },
                             {
-                              title: '所需卢恩',
+                              title: '所需盧恩',
                               dataIndex: 'runes',
                               key: 'runes',
                               width: '33%',
@@ -303,7 +303,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                               )
                             },
                             {
-                              title: '总成本',
+                              title: '總成本',
                               dataIndex: 'totalCost',
                               key: 'totalCost',
                               width: '34%',
@@ -318,21 +318,21 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                       </div>
                     </div>
 
-                    {/* 升级所需卢恩注释信息 */}
+                    {/* 升級所需盧恩註釋信息 */}
                     <Alert
-                      // 加一个title：小提示
+                      // 加一個title：小提示
                       description={
                         <div className="dodge-frames-tips">
                           <div className="tip-item">
-                            1. 角色 3 级可使用<strong style={{ color: '#0360b8' }}>蓝色武器</strong>，
-                            7 级可使用<strong style={{ color: '#722ed1' }}>紫色武器</strong>，
-                            10 级可使用<strong style={{ color: '#faad14' }}>金色武器</strong>。
+                            1. 角色 3 級可使用<strong style={{ color: '#0360b8' }}>藍色武器</strong>，
+                            7 級可使用<strong style={{ color: '#722ed1' }}>紫色武器</strong>，
+                            10 級可使用<strong style={{ color: '#faad14' }}>金色武器</strong>。
                           </div>
                           <div className="tip-item">
-                            2. 如果当前卢恩足够升级，左上角显示等级的数字左边会出现一个白色箭头(局内)。
+                            2. 如果當前盧恩足夠升級，左上角顯示等級的數字左邊會出現一個白色箭頭(局內)。
                           </div>
                           <div className="tip-item">
-                            3. 单人模式获得1.5倍卢恩 | 双人模式获得1.3倍卢恩 | 三人模式获得1倍卢恩
+                            3. 單人模式獲得1.5倍盧恩 | 雙人模式獲得1.3倍盧恩 | 三人模式獲得1倍盧恩
                           </div>
                         </div>
                       }
@@ -345,24 +345,24 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
               </div>
             </div>
 
-            {/* 可点击时间轴 */}
+            {/* 可點擊時間軸 */}
             <div className="mechanics-grid one-columns">
               <div className="mechanic-card" id="prison-rain-mechanism">
                 <div className="card-content">
                   <div className="card-title-section">
                     <Title level={5} className="mechanic-card-title">
                       <PlayCircleTwoTone twoToneColor="#722ed1" />
-                      游戏时间机制: 监牢/夜雨
+                      遊戲時間機制: 監牢/夜雨
                     </Title>
                   </div>
                   <div className="card-body">
                     <div className="timeline-layout-container">
                       <div className="timeline-content-wrapper">
-                        {/* 时间轴内容 */}
+                        {/* 時間軸內容 */}
                         <div className="timeline-content">
-                          {/* 时间轴 + 两栏布局 */}
+                          {/* 時間軸 + 兩欄佈局 */}
                           <div className="timeline-with-steps">
-                            {/* 左侧时间轴 */}
+                            {/* 左側時間軸 */}
                             <div className="timeline-steps-container">
                               <Steps
                                 size="small"
@@ -370,19 +370,19 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                 current={day1TimelineStep}
                                 onChange={setDay1TimelineStep}
                                 items={[
-                                  { title: '0:00', description: 'Day 1/ Day 2 开始' },
-                                  { title: '4:30', description: '第一次缩圈开始' },
-                                  { title: '7:30', description: '第一次缩圈结束' },
-                                  { title: '11:00', description: '第二次缩圈开始' },
-                                  { title: '14:30', description: '第二次缩圈结束' },
+                                  { title: '0:00', description: 'Day 1/ Day 2 開始' },
+                                  { title: '4:30', description: '第一次縮圈開始' },
+                                  { title: '7:30', description: '第一次縮圈結束' },
+                                  { title: '11:00', description: '第二次縮圈開始' },
+                                  { title: '14:30', description: '第二次縮圈結束' },
                                 ]}
                               />
                             </div>
 
-                            {/* 右侧内容区域 */}
-                            {/* 两栏布局 */}
+                            {/* 右側內容區域 */}
+                            {/* 兩欄佈局 */}
                             <div className="timeline-two-columns">
-                              {/* 第一栏：缩圈效果图 */}
+                              {/* 第一欄：縮圈效果圖 */}
                               <div className="timeline-column">
                                 <div className="timeline-column-content">
                                   <CircleShrinkEffect currentStep={day1TimelineStep} />
@@ -399,14 +399,14 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                 </div>
                               </div>
 
-                              {/* 第二栏：封印监牢Boss + 雨中冒险伤害 */}
+                              {/* 第二欄：封印監牢Boss + 雨中冒險傷害 */}
                               <div className="timeline-column">
                                 <div className="timeline-column-content">
                                   <div className="boss-info">
                                     <div className="boss-progress-container">
                                       <div className="boss-section-title">
                                         <LockOutlined />
-                                        Day 1: 封印监牢Boss血量/攻击力
+                                        Day 1: 封印監牢Boss血量/攻擊力
                                       </div>
                                       <div className="boss-progress-item">
                                         <div className="progress-label">Boss血量：</div>
@@ -417,7 +417,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                         />
                                       </div>
                                       <div className="boss-progress-item">
-                                        <div className="progress-label">Boss攻击力：</div>
+                                        <div className="progress-label">Boss攻擊力：</div>
                                         <Progress
                                           percent={day1TimelineStep <= 4 ? 53 : 0}
                                           strokeColor="#3f8600"
@@ -429,7 +429,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                     <div className="boss-progress-container">
                                       <div className="boss-section-title">
                                         <LockOutlined />
-                                        Day 2: 封印监牢Boss血量/攻击力
+                                        Day 2: 封印監牢Boss血量/攻擊力
                                       </div>
                                       <div className="boss-progress-item">
                                         <div className="progress-label">Boss血量：</div>
@@ -441,7 +441,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                         />
                                       </div>
                                       <div className="boss-progress-item">
-                                        <div className="progress-label">Boss攻击力：</div>
+                                        <div className="progress-label">Boss攻擊力：</div>
                                         <Progress
                                           percent={day1TimelineStep <= 1 ? 80 :
                                             day1TimelineStep <= 3 ? 100 : 100}
@@ -456,16 +456,16 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                     <div className="boss-progress-container">
                                       <div className="boss-section-title">
                                         <CloudOutlined />
-                                        夜雨伤害（当前数据为9.10更新前版本，更新后夜雨伤害增加，具体数据待更新）
+                                        夜雨傷害（當前數據為9.10更新前版本，更新後夜雨傷害增加，具體數據待更新）
                                       </div>
                                       <div className="damage-stat">
                                         <Statistic
-                                          title="每秒受到的伤害"
-                                          value={day1TimelineStep === 0 ? '夜雨尚未出现' :
-                                            day1TimelineStep === 1 ? '当前角色血量 × 2% + 15' :
-                                              day1TimelineStep === 2 ? '当前角色血量 × 2% + 15' :
-                                                day1TimelineStep === 3 ? '当前角色血量 × 2% + 30' :
-                                                  day1TimelineStep === 4 ? '当前角色血量 × 2% + 30' : '当前角色血量 × 2% + 30'}
+                                          title="每秒受到的傷害"
+                                          value={day1TimelineStep === 0 ? '夜雨尚未出現' :
+                                            day1TimelineStep === 1 ? '當前角色血量 × 2% + 15' :
+                                              day1TimelineStep === 2 ? '當前角色血量 × 2% + 15' :
+                                                day1TimelineStep === 3 ? '當前角色血量 × 2% + 30' :
+                                                  day1TimelineStep === 4 ? '當前角色血量 × 2% + 30' : '當前角色血量 × 2% + 30'}
                                           valueStyle={{
                                             color: day1TimelineStep === 0 ? '#666' : '#1890ff',
                                             fontSize: '20px',
@@ -474,7 +474,7 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                                       </div>
                                       <div className="damage-stat" style={{ marginTop: '8px' }}>
                                         <Text type="secondary" style={{ fontSize: '14px', color: '#666' }}>
-                                          超时秒杀机制：110秒后，伤害变为10%+30/0.5s，120秒后直接秒杀
+                                          超時秒殺機制：110秒後，傷害變為10%+30/0.5s，120秒後直接秒殺
                                         </Text>
                                       </div>
                                     </div>
@@ -498,10 +498,10 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
                   <div className="card-title-section">
                     <Title level={5} className="mechanic-card-title">
                       <HeartTwoTone twoToneColor="#eb2f96" />
-                      回血量计算器
+                      回血量計算器
                       <DataSourceTooltip
                         links={[{
-                          text: "【黑夜君临】圣杯瓶恢复、缓回、群回机制解析及常见误区",
+                          text: "【黑夜君臨】聖盃瓶恢復、緩回、群回機制解析及常見誤區",
                           url: "https://www.bilibili.com/video/BV1M18jzQE9X"
                         }]}
                       />
@@ -514,14 +514,14 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
               </div>
             </div>
 
-            {/* 评论与讨论 */}
+            {/* 評論與討論 */}
             <div className="mechanics-grid">
               <div className="mechanic-card" id="comments-discussion">
                 <div className="card-content">
                   <div className="card-title-section">
                     <Title level={5} className="mechanic-card-title">
                       <MessageOutlined />
-                      评论与讨论(需登录github帐号)
+                      評論與討論(需登錄github帳號)
                     </Title>
                   </div>
                   <div className="card-body">
@@ -537,11 +537,11 @@ const GameMechanicsView: React.FC<GameMechanicsViewProps> = ({ functionName }) =
     );
   }
 
-  // 其他功能保持原有的简单显示
+  // 其他功能保持原有的簡單顯示
   return (
     <div className="mechanics-development-placeholder">
       <Title level={3} className="mechanics-development-title">{functionName}</Title>
-      <Text className="mechanics-development-text">此功能正在开发中...</Text>
+      <Text className="mechanics-development-text">此功能正在開發中...</Text>
     </div>
   );
 };

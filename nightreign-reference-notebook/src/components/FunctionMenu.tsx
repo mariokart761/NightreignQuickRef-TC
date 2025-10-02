@@ -5,75 +5,75 @@ import { getMainNavigationOrder } from '../config/navigationConfig';
 
 interface FunctionMenuProps {
   onTabChange: (tab: string) => void;
-  onSubTabChange?: (tabKey: string) => void; // 子Tab切换回调
-  onStepChange?: (stepIndex: number) => void; // Step切换回调
+  onSubTabChange?: (tabKey: string) => void; // 子Tab切換回調
+  onStepChange?: (stepIndex: number) => void; // Step切換回調
 }
 
 const FunctionMenu: React.FC<FunctionMenuProps> = ({ onTabChange, onSubTabChange, onStepChange }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  // 功能导航菜单项 - 使用Menu组件的数据结构
+  // 功能導航菜單項 - 使用Menu組件的數據結構
   const menuItems = [
     {
-      key: '游戏机制',
-      label: '⚙️ 游戏机制',
+      key: '遊戲機制',
+      label: '⚙️ 遊戲機制',
       children: [
-        { key: '游戏时间机制', label: '⏰ 游戏时间机制', anchorId: 'game-time-mechanism' },
-        { key: '升级所需卢恩', label: '💰 升级所需卢恩统计', anchorId: 'runes-required' },
-        { key: '游戏时间机制: 监牢/夜雨', label: '🌧️ 游戏时间机制: 监牢/夜雨', anchorId: 'prison-rain-mechanism' },
-        { key: '血量恢复计算器', label: '❤️ 血量恢复计算器', anchorId: 'recovery-calculator' },
-        { key: '评论与讨论', label: '💬 评论与讨论', anchorId: 'comments-discussion' }
+        { key: '遊戲時間機制', label: '⏰ 遊戲時間機制', anchorId: 'game-time-mechanism' },
+        { key: '升級所需盧恩', label: '💰 升級所需盧恩統計', anchorId: 'runes-required' },
+        { key: '遊戲時間機制: 監牢/夜雨', label: '🌧️ 遊戲時間機制: 監牢/夜雨', anchorId: 'prison-rain-mechanism' },
+        { key: '血量恢復計算器', label: '❤️ 血量恢復計算器', anchorId: 'recovery-calculator' },
+        { key: '評論與討論', label: '💬 評論與討論', anchorId: 'comments-discussion' }
       ]
     },
     {
-      key: '角色数据',
-      label: '👤 角色数据',
+      key: '角色數據',
+      label: '👤 角色數據',
       children: [
-        { key: '角色属性数据', label: '📊 角色基础属性对比', anchorId: 'character-attributes' },
-        { key: '角色详细数据', label: '📈 角色等级成长数据', anchorId: 'character-detail-data' },
-        { key: '无敌帧长度对比', label: '⚡ 翻滚/闪避无敌帧对比', anchorId: 'dodge-frames' },
-        { key: '隐士出招表', label: '🔮 隐士混合魔法出招表', anchorId: 'hermit-magic-list' }
+        { key: '角色屬性數據', label: '📊 角色基礎屬性對比', anchorId: 'character-attributes' },
+        { key: '角色詳細數據', label: '📈 角色等級成長數據', anchorId: 'character-detail-data' },
+        { key: '無敵幀長度對比', label: '⚡ 翻滾/閃避無敵幀對比', anchorId: 'dodge-frames' },
+        { key: '隱士出招表', label: '🔮 隱士混合魔法出招表', anchorId: 'hermit-magic-list' }
       ]
     },
     {
-      key: '词条详细数据',
-      label: '📋 词条详细数据',
+      key: '詞條詳細數據',
+      label: '📋 詞條詳細數據',
       children: [
-        { key: '局外词条', label: '🌕 局外词条', anchorId: 'outsider-entries', tabKey: '局外词条' },
-        { key: '局内词条', label: '🌖 局内词条', anchorId: 'in-game-entries', tabKey: '局内词条' },
-        { key: '护符词条', label: '🌗 护符词条', anchorId: 'talisman-entries', tabKey: '护符词条' },
-        { key: '强化类别词条适用范围', label: '🌘 强化类别词条适用范围', anchorId: 'enhancement-categories', tabKey: '强化类别词条适用范围' },
-        { key: '道具/采集效果', label: '🌒 道具/采集效果', anchorId: 'item-effects', tabKey: '道具效果' },
-        { key: '深夜模式-局外词条', label: '🌌 深夜模式-局外词条', anchorId: 'deep-night-entries', tabKey: '深夜模式局外词条' },
-        { key: '深夜模式-局内词条', label: '🌌 深夜模式-局内词条', anchorId: 'deep-night-in-game-entries', tabKey: '深夜模式局内词条' },
+        { key: '局外詞條', label: '🌕 局外詞條', anchorId: 'outsider-entries', tabKey: '局外詞條' },
+        { key: '局內詞條', label: '🌖 局內詞條', anchorId: 'in-game-entries', tabKey: '局內詞條' },
+        { key: '護符詞條', label: '🌗 護符詞條', anchorId: 'talisman-entries', tabKey: '護符詞條' },
+        { key: '強化類別詞條適用範圍', label: '🌘 強化類別詞條適用範圍', anchorId: 'enhancement-categories', tabKey: '強化類別詞條適用範圍' },
+        { key: '道具/採集效果', label: '🌒 道具/採集效果', anchorId: 'item-effects', tabKey: '道具效果' },
+        { key: '深夜模式-局外詞條', label: '🌌 深夜模式-局外詞條', anchorId: 'deep-night-entries', tabKey: '深夜模式局外詞條' },
+        { key: '深夜模式-局內詞條', label: '🌌 深夜模式-局內詞條', anchorId: 'deep-night-in-game-entries', tabKey: '深夜模式局內詞條' },
       ]
     },
     {
-      key: '夜王Boss数据',
-      label: '👑 夜王Boss数据',
+      key: '夜王Boss數據',
+      label: '👑 夜王Boss數據',
       children: [
-        { key: '夜王基础数据', label: '🌙 夜王基础数据', anchorId: 'night-king-basic', tabKey: 'boss-data' },
-        { key: '野生Boss数据', label: '☠️ 野生Boss数据', anchorId: 'wild-boss-data', tabKey: 'wild-boss-data' },
-        { key: '圆桌厅堂人物数据', label: '🏛️ 圆桌厅堂人物数据', anchorId: 'roundtable-characters', tabKey: 'character-data' },
-        { key: '永夜山羊召唤罪人详情', label: '🐐 永夜山羊召唤罪人详情', anchorId: 'sinner-details', tabKey: 'sinner-data' },
-        { key: '利普拉的交易选项', label: '⚖️ 利普拉的交易(Boss战)', anchorId: 'lipula-trades', tabKey: 'lipula-trades' },
+        { key: '夜王基礎數據', label: '🌙 夜王基礎數據', anchorId: 'night-king-basic', tabKey: 'boss-data' },
+        { key: '野生Boss數據', label: '☠️ 野生Boss數據', anchorId: 'wild-boss-data', tabKey: 'wild-boss-data' },
+        { key: '圓桌廳堂人物數據', label: '🏛️ 圓桌廳堂人物數據', anchorId: 'roundtable-characters', tabKey: 'character-data' },
+        { key: '永夜山羊召喚罪人詳情', label: '🐐 永夜山羊召喚罪人詳情', anchorId: 'sinner-details', tabKey: 'sinner-data' },
+        { key: '利普拉的交易選項', label: '⚖️ 利普拉的交易(Boss戰)', anchorId: 'lipula-trades', tabKey: 'lipula-trades' },
         { key: '特殊事件及地形效果', label: '🌋 特殊事件及地形效果', anchorId: 'special-events', tabKey: 'special-events' }
       ]
     },
     {
-      key: '传说武器详情',
-      label: '⚔️ 传说武器详情',
+      key: '傳說武器詳情',
+      label: '⚔️ 傳說武器詳情',
       children: [
-        { key: '传说武器强度面板', label: '🛡️ 不同角色使用传说武器的强度面板', anchorId: 'weapon-strength-panel', stepIndex: 0 },
-        { key: '武器庇佑效果', label: '🗡️ 传说武器的庇佑效果', anchorId: 'weapon-blessing-effects', stepIndex: 1 }
+        { key: '傳說武器強度面板', label: '🛡️ 不同角色使用傳說武器的強度面板', anchorId: 'weapon-strength-panel', stepIndex: 0 },
+        { key: '武器庇佑效果', label: '🗡️ 傳說武器的庇佑效果', anchorId: 'weapon-blessing-effects', stepIndex: 1 }
       ]
     },
   ];
 
 
 
-  // 根据配置文件中的顺序重新排列菜单项
+  // 根據配置文件中的順序重新排列菜單項
   const getOrderedMenuItems = () => {
     const order = getMainNavigationOrder();
     return order.map(key => {
@@ -83,36 +83,36 @@ const FunctionMenu: React.FC<FunctionMenuProps> = ({ onTabChange, onSubTabChange
   };
 
   const handleMenuClick = ({ key }: { key: string }) => {
-    // 检查是否是主菜单项
+    // 檢查是否是主菜單項
     const mainMenuItem = menuItems.find(item => item.key === key);
     if (mainMenuItem) {
-      // 切换到对应的功能页面
+      // 切換到對應的功能頁面
       onTabChange(key);
       setMenuVisible(false);
     } else {
-      // 检查是否是子菜单项
+      // 檢查是否是子菜單項
       const subMenuItem = menuItems.flatMap(item =>
         item.children.map(subItem => ({ ...subItem, parentKey: item.key }))
       ).find(subItem => subItem.key === key);
 
       if (subMenuItem) {
-        // 先切换到父菜单页面
+        // 先切換到父菜單頁面
         onTabChange(subMenuItem.parentKey);
         setMenuVisible(false);
 
-        // 延迟执行锚点跳转，确保页面已经渲染
+        // 延遲執行錨點跳轉，確保頁面已經渲染
         setTimeout(() => {
-          // 处理Tab页面的切换
+          // 處理Tab頁面的切換
           if ('tabKey' in subMenuItem && subMenuItem.tabKey && onSubTabChange) {
             onSubTabChange(subMenuItem.tabKey);
           }
 
-          // 处理Step页面的切换
+          // 處理Step頁面的切換
           if ('stepIndex' in subMenuItem && typeof subMenuItem.stepIndex === 'number' && onStepChange) {
             onStepChange(subMenuItem.stepIndex);
           }
 
-          // 执行锚点跳转
+          // 執行錨點跳轉
           if (subMenuItem.anchorId) {
             const element = document.getElementById(subMenuItem.anchorId);
             if (element) {
@@ -135,7 +135,7 @@ const FunctionMenu: React.FC<FunctionMenuProps> = ({ onTabChange, onSubTabChange
 
   return (
     <div className="fixed-logo">
-      <Tooltip title="功能导航" placement="right">
+      <Tooltip title="功能導航" placement="right">
         <img
           src={logoImage}
           alt="Nightreign Logo"
@@ -151,7 +151,7 @@ const FunctionMenu: React.FC<FunctionMenuProps> = ({ onTabChange, onSubTabChange
         />
       </Tooltip>
 
-      {/* 功能导航菜单 */}
+      {/* 功能導航菜單 */}
       {menuVisible && (
         <div
           className="function-menu-overlay"
@@ -186,7 +186,7 @@ const FunctionMenu: React.FC<FunctionMenuProps> = ({ onTabChange, onSubTabChange
         </div>
       )}
 
-      {/* 点击外部关闭菜单 */}
+      {/* 點擊外部關閉菜單 */}
       {menuVisible && (
         <div
           style={{

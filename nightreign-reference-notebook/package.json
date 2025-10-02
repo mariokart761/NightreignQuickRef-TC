@@ -21,6 +21,7 @@
     "@types/lodash": "^4.17.20",
     "antd": "^5.26.7",
     "lodash": "^4.17.21",
+    "opencc-js": "^1.0.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "vercount-react": "^0.1.4"
