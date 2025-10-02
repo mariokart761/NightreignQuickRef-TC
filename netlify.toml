@@ -1,0 +1,10 @@
+[build]
+  base = "nightreign-reference-notebook"
+  command = "npm run build"
+  publish = "dist"
+
+# 自動處理 SPA 路由，避免 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
