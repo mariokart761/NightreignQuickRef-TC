@@ -370,7 +370,7 @@
 		},
 		"6060300": {
 			"entry_id": 6060300,
-			"entry_name": "每次打倒大教堂的強敵，能提升血量上限",
+			"entry_name": "每次打倒大教堂的強敵，能提升HP上限",
 			"entry_type": "能力值",
 			"explanation": "每次生命值上限+5%",
 			"buff_type": "不附帶負面詞條",
@@ -508,9 +508,9 @@
 		},
 		"6500500": {
 			"entry_id": 6500500,
-			"entry_name": "【復仇者】發動能力時，能提升專注值上限",
+			"entry_name": "【復仇者】發動能力時，能提升FP上限",
 			"entry_type": "僅限特定角色",
-			"explanation": "每次發動能力【死靈術】，提升專注值上限，局內無限成長; 最多可成長60次，最多 +51% 專注值上限;",
+			"explanation": "每次發動能力【死靈術】，提升FP上限，局內無限成長; 最多可成長60次，最多 +51% FP上限;",
 			"buff_type": "不附帶負面詞條",
 			"superposability": "不可疊加"
 		},
@@ -564,7 +564,7 @@
 		},
 		"6610400": {
 			"entry_id": 6610400,
-			"entry_name": "提升血量上限",
+			"entry_name": "提升HP上限",
 			"entry_type": "能力值",
 			"explanation": "生命值上限+10%",
 			"buff_type": "附帶負面詞條",
@@ -572,9 +572,9 @@
 		},
 		"6610500": {
 			"entry_id": 6610500,
-			"entry_name": "提升專注值上限",
+			"entry_name": "提升FP上限",
 			"entry_type": "能力值",
-			"explanation": "專注值上限+15%",
+			"explanation": "FP上限+15%",
 			"buff_type": "附帶負面詞條",
 			"superposability": "可疊加"
 		},
@@ -588,9 +588,9 @@
 		},
 		"6610700": {
 			"entry_id": 6610700,
-			"entry_name": "減少專注值消耗",
+			"entry_name": "減少FP值消耗",
 			"entry_type": "能力值",
-			"explanation": "專注值消耗-8%",
+			"explanation": "FP消耗-8%",
 
 			"buff_type": "不附帶負面詞條",
 			"superposability": "可疊加"
