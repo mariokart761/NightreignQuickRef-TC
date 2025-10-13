@@ -1,21 +1,21 @@
 [
     {
         "entry_id":"8000000",
-        "entry_name":"提升血量上限",
+        "entry_name":"提升HP上限",
         "entry_type":"能力值",
         "explanation":"生命值上限+10% \/ +15%",
         "superposability":"可疊加"
     },
     {
         "entry_id":"8010000",
-        "entry_name":"提升專注值上限",
+        "entry_name":"提升FP上限",
         "entry_type":"能力值",
         "explanation":"專注值上限+10% \/ +15%",
         "superposability":"可疊加"
     },
     {
         "entry_id":"8010100",
-        "entry_name":"減少專注值消耗",
+        "entry_name":"減少FP消耗",
         "entry_type":"能力值",
         "explanation":"專注值消耗-10% \/ -15%",
         "superposability":"可疊加"
