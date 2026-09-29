@@ -1,0 +1,135 @@
+/* 主樣式文件 - 導入所有樣式模塊 */
+
+/* 導入設計系統 */
+@import './design-system.css';
+
+/* 導入組件樣式 */
+@import './components.css';
+
+/* 導入工具類 */
+@import './utilities.css';
+
+/* 全局樣式重置和基礎樣式 */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  transition: all var(--transition-normal);
+}
+
+/* 特殊元素排除全局動畫，使用自定義動畫 */
+.ant-table,
+.ant-table *,
+.ant-btn,
+.ant-btn *,
+.ant-input,
+.ant-input *,
+.ant-select,
+.ant-select *,
+.ant-modal,
+.ant-modal *,
+.ant-drawer,
+.ant-drawer *,
+.ant-message,
+.ant-message *,
+.ant-notification,
+.ant-notification * {
+  transition: none;
+}
+
+/* 表格特殊動畫 */
+.ant-table {
+  transition: background-color var(--transition-normal), 
+              border-color var(--transition-normal);
+}
+
+/* .ant-table-thead > tr > th {
+  transition: background-color var(--transition-normal), 
+              color var(--transition-normal);
+}
+
+.ant-table-tbody > tr > td {
+  transition: background-color var(--transition-normal), 
+              color var(--transition-normal);
+} */
+
+/* 按鈕動畫 */
+.ant-btn {
+  transition: all var(--transition-normal) !important;
+}
+
+/* 輸入框動畫 */
+.ant-input,
+.ant-select-selector {
+  transition: all var(--transition-normal) !important;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* 鏈接樣式 */
+a {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-500);
+  text-decoration: inherit;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--color-primary-600);
+}
+
+
+
+/* 標題樣式 */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* 滾動條樣式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-secondary);
+}
+
+/* 選擇文本樣式 */
+::selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-primary-900);
+}
+
+[data-theme="dark"] ::selection,
+body[tomato-theme="dark"] ::selection {
+  background-color: var(--color-primary-700);
+  color: var(--color-primary-100);
+} 
